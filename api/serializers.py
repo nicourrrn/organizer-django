@@ -1,12 +1,12 @@
 from rest_framework import serializers
 from api import models
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.User
+        model = models.AppUser
         fields = "__all__"
 
-class TaskSerializer(serializers.HyperlinkedModelSerializer):
+class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Task
         fields = "__all__"
@@ -17,12 +17,12 @@ class TaskStatusSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class FinOperationSerializer(serializers.HyperlinkedModelSerializer):
+class FinOperationSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.FinOperation
         fields = "__all__"
 
-class FinOperationPresetSerializer(serializers.HyperlinkedModelSerializer):
+class FinOperationPresetSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.FinOperationPreset
         fields = "__all__"
@@ -37,7 +37,7 @@ class FinOperationTagSerializer(serializers.ModelSerializer):
         model = models.FinOperationTag
         fields = "__all__"
 
-class NoteSerializer(serializers.HyperlinkedModelSerializer):
+class NoteSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Note
         fields = "__all__"

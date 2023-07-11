@@ -12,12 +12,14 @@ router = DefaultRouter()
 
 router.register(r'tasks/statuses', views.TaskStatusView, basename='status')
 router.register(r'tasks', views.TaskView, basename='task')
-router.register(r'fin_operations', views.FinOperationView, basename='fin_operation')
+
 router.register(r'fin_operations/types', views.FinOperationTypeView, basename='type')
 router.register(r'fin_operations/tags', views.FinOperationTagView, basename='tag')
-router.register(r'notes', views.NoteView, basename='note')
+router.register(r'fin_operations', views.FinOperationView, basename='fin_operation')
+
 router.register(r'notes/tags', views.NoteTagView, basename='tag')
-router.register(r'notes', views.NoteTypeView, basename='type')
+router.register(r'notes/types', views.NoteTypeView, basename='type')
+router.register(r'notes', views.NoteView, basename='note')
 
 urlpatterns = [
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),

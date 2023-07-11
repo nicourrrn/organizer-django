@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class TaskStatus(models.Model):
@@ -11,7 +12,7 @@ class Task(models.Model):
     parent = models.ForeignKey("Task", on_delete=models.CASCADE, null=True)
     
 
-class User(models.Model):
+class AppUser(User):
     main_task = models.ForeignKey(Task, on_delete=models.CASCADE) 
    
 class FinOperationType(models.Model):
