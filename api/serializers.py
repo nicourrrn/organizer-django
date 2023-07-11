@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from api import models
+from api import users, models
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.AppUser
+        model = models.Client
         fields = "__all__"
 
 class TaskSerializer(serializers.ModelSerializer):

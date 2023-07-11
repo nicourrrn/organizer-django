@@ -1,20 +1,36 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
+
+from typing import Self
 
 
 class TaskStatus(models.Model):
     name = models.CharField(max_length=16)
 
 class Task(models.Model):
-    name = models.CharField(max_length=64)
-    content = models.TextField()
+    name = models.CharField(max_length=64, default='Default name')
+    content = models.TextField(default='')
     status = models.ForeignKey(TaskStatus, on_delete=models.SET_NULL, null=True)
     parent = models.ForeignKey("Task", on_delete=models.CASCADE, null=True)
     
 
-class AppUser(User):
-    main_task = models.ForeignKey(Task, on_delete=models.CASCADE) 
-   
+    @classmethod
+    def create_root(cls) -> Self:
+        return cls.objects.get_or_create(
+                name='Hidden name',
+            )[0].pk 
+
+
+class Client(AbstractUser):
+    main_task = models.ForeignKey(Task, on_delete=models.CASCADE,
+                                  default=Task.create_root) 
+    USERNAME_FIELD = 'username'
+
+    def __str__(self):
+        return self.username
+
+
+
 class FinOperationType(models.Model):
     name = models.CharField(max_length=64)
 
