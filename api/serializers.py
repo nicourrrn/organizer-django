@@ -22,6 +22,11 @@ class FinOperationSerializer(serializers.HyperlinkedModelSerializer):
         model = models.FinOperation
         fields = "__all__"
 
+class FinOperationPresetSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = models.FinOperationPreset
+        fields = "__all__"
+
 class FinOperationTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.FinOperationType
