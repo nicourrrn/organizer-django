@@ -1,9 +1,11 @@
-from rest_framework import viewsets
-from api import serializers, models
+from rest_framework import viewsets 
+from rest_framework.permissions import IsAuthenticated
+from api import serializers, models, permissions
 
 class TaskView(viewsets.ModelViewSet):
     queryset = models.Task.objects.all()
     serializer_class = serializers.TaskSerializer
+    permission_classes = [IsAuthenticated, permissions.IsTaskOwner]
 
 
 # Додати можливість діставати таски за статусом
