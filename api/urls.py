@@ -10,6 +10,7 @@ from rest_framework_simplejwt.views import (
 
 router = DefaultRouter()
 
+router.register(r'tasks/statuses', views.TaskStatusView, basename='status')
 router.register(r'tasks', views.TaskView, basename='task')
 
 urlpatterns = [

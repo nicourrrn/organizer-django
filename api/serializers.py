@@ -6,4 +6,7 @@ class TaskSerializer(serializers.HyperlinkedModelSerializer):
         model = models.Task
         fields = "__all__"
 
-
+class TaskStatusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.TaskStatus
+        fields = "__all__"
