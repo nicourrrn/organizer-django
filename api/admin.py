@@ -1,11 +1,10 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from api import models
-from api import users 
+from api import models, forms
 
 class ClientUserAdmin(UserAdmin):
-    add_form = users.ClientCreationForm
-    form = users.ClientChangeForm
+    add_form = forms.ClientCreationForm
+    form = forms.ClientChangeForm
     model = models.Client
     list_display = ['username']
 
