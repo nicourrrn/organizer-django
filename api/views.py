@@ -10,7 +10,13 @@ class TaskView(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated, permissions.IsTaskOwner]
 
     def get_queryset(self):
-        return self.queryset.filter(onwer = self.request.user)
+        return self.queryset.filter(owner = self.request.user)
+
+    def create(self, request, *args, **kwargs):
+        data = parsers.JSONParser().parse(io.BytesIO(request.body))
+        data['owner'] = request.user.id
+        request.body = renderers.JSONRenderer().render(data)
+        return super().create(request, *args, **kwargs)
     
 
 # Додати можливість діставати таски за статусом
