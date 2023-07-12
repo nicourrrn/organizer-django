@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'api',
 ]
 
-AUTH_USER_MODEL = 'api.Client'
 
 
 MIDDLEWARE = [
